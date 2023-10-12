@@ -9,7 +9,7 @@ public class UserRegistrationServiceTest {
 
     @Test
     public void testRegisterUser(){
-        User userForTesting = User.builder().id(1).name("Jhon").build();
+        User userForTesting = User.builder().id(1).name("John").build();
 
         String result = userRegistrationService.registerUser(userForTesting);
 
