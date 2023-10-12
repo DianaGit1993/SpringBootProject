@@ -6,6 +6,7 @@ public class Main {
         System.out.println("Hello world!");
         User user = new User(2,"Jhon");
         user.getId();
+
         user.setId(2);
 
         User user2 = User.builder().id(2).name("Jhon").build();
