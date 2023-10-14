@@ -3,7 +3,6 @@ package session27.challenges;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-
 /**
  * <h1>Exercise 1: Testing a String Utility Class</h1>
  * <ol><li>Create a class with utility methods that perform string manipulation operations
