@@ -138,7 +138,7 @@ public class StringUtilitiesTest {
     }
 
     @Test
-    void givenNullOrEmptyOperands_whenIsInString_thenExistenceIsReturn() {
+    void givenNullOrEmptyOperands_whenIsInString_thenFalseIsReturn() {
 
         Object[][] test = {
                 {null, null, false},
