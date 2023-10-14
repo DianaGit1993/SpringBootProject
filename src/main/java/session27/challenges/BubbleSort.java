@@ -24,9 +24,12 @@ public class BubbleSort <T> {
     }
 
     public void sort(T[] array) {
+
+        // Flag to stop unnecessary iterations
         boolean stop = false;
+
         int i = 0,
-                len = (array != null && array.length > 0) ? array.length : 0;
+            len = (array != null && array.length > 0) ? array.length : 0;
 
         while (i < len) {
             // Sets the [stop] flag to TRUE.
@@ -44,21 +47,5 @@ public class BubbleSort <T> {
             if (stop) break;
             i++;
         }
-    }
-}
-
-class TestingClass {
-    private static final BubbleSort<String> stringBubbleSort = new BubbleSort<>(Comparator.reverseOrder());
-    public static void main(String[] args) {
-
-        String[] input = {"de", "a", "r", "q", "bb"};
-        stringBubbleSort.sort(input);
-
-        String[] expectedResult = {"de", "a", "r", "q", "bb"};
-        Arrays.sort(expectedResult, Comparator.reverseOrder());
-
-
-        System.out.println(Arrays.toString(input) + " | " + Arrays.toString(expectedResult));
-
     }
 }

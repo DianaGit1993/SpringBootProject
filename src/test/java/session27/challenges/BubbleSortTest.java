@@ -11,7 +11,7 @@ import java.util.Comparator;
  * <li>Implement the sorting algorithm in a separate class or method.</li>
  * <li>Write test cases using JUnit to verify the correctness and efficiency of the sorting algorithm.</li>
  * <li>Use JUnit assertions to check that the input arrays are sorted in the expected order.</li></ul>
- */
+ **/
 public class BubbleSortTest {
     private final BubbleSort<String> stringBubbleSort = new BubbleSort<>();
     private final BubbleSort<Long> longBubbleSort = new BubbleSort<>();
