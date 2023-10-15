@@ -1,4 +1,4 @@
-package org.example;
+package session26.practice;
 
 public class UserRegistrationService {
 

@@ -1,8 +1,7 @@
-package session27.prctice;
+package session27.practice;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import session27.practice.Calculator;
 
 class CalculatorTest {
     private Calculator calculator = new Calculator();

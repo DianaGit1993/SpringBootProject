@@ -10,7 +10,7 @@ import java.util.Objects;
  * <li>Implement the sorting algorithm in a separate class or method.</li>
  * <li>Write test cases using JUnit to verify the correctness and efficiency of the sorting algorithm.</li>
  * <li>Use JUnit assertions to check that the input arrays are sorted in the expected order.</li></ul>
- */
+ **/
 public class BubbleSort <T> {
 
     private Comparator<? super T> comparator;
@@ -45,7 +45,7 @@ public class BubbleSort <T> {
                 }
             }
             if (stop) break;
-            i++;
+            else i++;
         }
     }
 }

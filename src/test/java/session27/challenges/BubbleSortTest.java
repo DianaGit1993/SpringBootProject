@@ -18,7 +18,7 @@ public class BubbleSortTest {
     private final BubbleSort<Double> doubleBubbleSort = new BubbleSort<>();
 
     @Test
-    void givenNullStringArray_whenSort_thenNullStringArray() {
+    void givenNullStringArray_WhenSort_ThenNullStringArray() {
 
         String[] input = null;
         stringBubbleSort.sort(input);
@@ -31,7 +31,7 @@ public class BubbleSortTest {
     }
 
     @Test
-    void givenStringArray_whenSort_thenNaturallySortedStringArray() {
+    void givenStringArray_WhenSort_ThenNaturallySortedStringArray() {
 
         String[] input = {"de", "a", "r", "q", "bb"};
         stringBubbleSort.sort(input);
@@ -44,7 +44,7 @@ public class BubbleSortTest {
     }
 
     @Test
-    void givenStringArray_whenSort_thenReversedSortedStringArray() {
+    void givenStringArray_WhenSort_ThenReversedSortedStringArray() {
 
         BubbleSort<String> stringRevBubbleSort = new BubbleSort<>(Comparator.reverseOrder());
 
@@ -59,7 +59,7 @@ public class BubbleSortTest {
     }
 
     @Test
-    void givenNullIntArray_whenSort_thenNullIntArray() {
+    void givenNullIntArray_WhenSort_ThenNullIntArray() {
 
         Long[] input = null;
         longBubbleSort.sort(input);
@@ -72,7 +72,7 @@ public class BubbleSortTest {
     }
 
     @Test
-    void givenLongArray_whenSort_thenNaturallySortedLongArray() {
+    void givenLongArray_WhenSort_ThenNaturallySortedLongArray() {
 
         Long[] input = {Long.MAX_VALUE, 1258793L, 2587L, 12L, 0L, Long.MIN_VALUE};
         longBubbleSort.sort(input);
@@ -85,7 +85,7 @@ public class BubbleSortTest {
     }
 
     @Test
-    void givenLongArray_whenSort_thenReversedSortedLongArray() {
+    void givenLongArray_WhenSort_ThenReversedSortedLongArray() {
 
         BubbleSort<Long> longRevBubbleSort = new BubbleSort<>(Comparator.reverseOrder());
 
@@ -100,7 +100,7 @@ public class BubbleSortTest {
     }
 
     @Test
-    void givenNullDoubleArray_whenSort_thenNullDoubleArray() {
+    void givenNullDoubleArray_WhenSort_ThenNullDoubleArray() {
 
         Double[] input = null;
         doubleBubbleSort.sort(input);
@@ -113,7 +113,7 @@ public class BubbleSortTest {
     }
 
     @Test
-    void givenDoubleArray_whenSort_thenNaturallySortedDoubleArray() {
+    void givenDoubleArray_WhenSort_ThenNaturallySortedDoubleArray() {
 
         Double[] input = {Double.MAX_VALUE, 1258793.01, 12.012, 0.0, 2587.0, Double.MIN_VALUE};
         doubleBubbleSort.sort(input);
@@ -126,7 +126,7 @@ public class BubbleSortTest {
     }
 
     @Test
-    void givenDoubleArray_whenSort_thenReversedSortedDoubleArray() {
+    void givenDoubleArray_WhenSort_ThenReversedSortedDoubleArray() {
 
         BubbleSort<Double> doubleRevBubbleSort = new BubbleSort<>(Comparator.reverseOrder());
 

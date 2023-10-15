@@ -1,7 +1,9 @@
-package org.example;
+package session26.practice;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import session26.practice.User;
+import session26.practice.UserRegistrationService;
 
 public class UserRegistrationServiceTest {
 

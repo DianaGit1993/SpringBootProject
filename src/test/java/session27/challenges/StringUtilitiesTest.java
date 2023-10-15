@@ -15,7 +15,7 @@ public class StringUtilitiesTest {
     private final StringUtilities stringUtilities = new StringUtilities();
 
     @Test
-    void givenNullOrEmptyString_whenReverseString_thenStringIsReturned() {
+    void givenNullOrEmptyString_WhenReverseString_ThenStringIsReturned() {
         String[] test = {null, ""};
 
         int counter = 0;
@@ -28,7 +28,7 @@ public class StringUtilitiesTest {
     }
 
     @Test
-    void givenNonNullOrEmptyString_whenReverseString_thenReverseStringIsReturned() {
+    void givenNonNullOrEmptyString_WhenReverseString_ThenReverseStringIsReturned() {
         String[][] test = {
                 {"\uD83D\uDE04\uD83E\uDD14abcd\uD83E\uDD17efgh\uD83E\uDD14",   //😄🤔abcd🤗efgh🤔
                  "\uD83E\uDD14hgfe\uD83E\uDD17dcba\uD83E\uDD14\uD83D\uDE04"},  //🤔hgfe🤗dcba🤔😄
@@ -47,7 +47,7 @@ public class StringUtilitiesTest {
     }
 
     @Test
-    void givenNullOrEmptyStringOrNegativePosition_whenTruncateString_thenStringIsReturned() {
+    void givenNullOrEmptyStringOrNegativePosition_WhenTruncateString_ThenStringIsReturned() {
 
         Object[][] test = {
                 {null, -1},
@@ -65,7 +65,7 @@ public class StringUtilitiesTest {
     }
 
     @Test
-    void givenStringAndPosition_whenTruncateString_thenTruncatedStringAtPositionIsReturned() {
+    void givenStringAndPosition_WhenTruncateString_ThenTruncatedStringAtPositionIsReturned() {
 
         Object[][] test = {
                 {"\uD83D\uDE04\uD83D\uDE04abcd\uD83E\uDD17efgh\uD83E\uDD14",  //😄😄abcd🤗efgh🤔
@@ -92,7 +92,7 @@ public class StringUtilitiesTest {
     }
 
     @Test
-    void givenNullOrEmptyOperands_whenCountOccurrences_thenZeroIsReturned() {
+    void givenNullOrEmptyOperands_WhenCountOccurrences_ThenZeroIsReturned() {
 
         Object[][] test = {
                 {null, null, 0},
@@ -115,7 +115,7 @@ public class StringUtilitiesTest {
     }
 
     @Test
-    void givenNonNullOrEmptyOperands_whenCountOccurrences_thenOccurrencesAreReturned() {
+    void givenNonNullOrEmptyOperands_WhenCountOccurrences_ThenOccurrencesAreReturned() {
 
         Object[][] test = {
                 {"\uD83E\uDD14\uD83D\uDE04\uD83E\uDD14abcd\uD83E\uDD17efgh\uD83E\uDD14",  //🤔😄🤔abcd🤗efgh🤔
@@ -137,7 +137,7 @@ public class StringUtilitiesTest {
     }
 
     @Test
-    void givenNullOrEmptyOperands_whenIsInString_thenFalseIsReturn() {
+    void givenNullOrEmptyOperands_WhenIsInString_ThenFalseIsReturn() {
 
         Object[][] test = {
                 {null, null, false},
@@ -160,7 +160,7 @@ public class StringUtilitiesTest {
     }
 
     @Test
-    void givenNonNullOrEmptyOperands_whenIsInString_thenExistenceIsReturn() {
+    void givenNonNullOrEmptyOperands_WhenIsInString_ThenExistenceIsReturn() {
 
         Object[][] test = {
                 {"\uD83E\uDD14\uD83D\uDE04\uD83E\uDD14abcd\uD83E\uDD17efgh\uD83E\uDD14",  //🤔😄🤔abcd🤗efgh🤔
