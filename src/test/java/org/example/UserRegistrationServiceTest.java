@@ -15,4 +15,14 @@ public class UserRegistrationServiceTest {
 
         Assertions.assertNotNull(result);
     }
+    @Test
+    public void testRegisterUserThrowsExceptionWhenUserIsNull(){
+        User userForTesting = null;
+
+        IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class,
+                () ->userRegistrationService.registerUser(userForTesting), "Expected IllegalArgumentException to be thrown:(");
+
+        Assertions.assertEquals("User can not be null.",exception.getMessage());
+        System.out.println("Test succeded//");
+    }
 }
