@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @ToString
-public class User {
+public class Users {
 
     private int id;
     private String name;
