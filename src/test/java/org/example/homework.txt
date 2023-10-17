@@ -1,0 +1,10 @@
+Exercise 4: Testing Collaborative Objects
+ 1. Create a class that collaborates (uses other dependencies) with one or more other objects through method calls.
+ 2. Use Mockito to mock the collaborator objects and simulate their behavior.
+ 3. Write test cases using JUnit to verify that the class under test interacts correctly with its collaborators
+ (the other dependencies called in the class under test).
+ 4. Verify that the expected methods are called with the correct arguments on the mocked objects.
+
+
+
+
