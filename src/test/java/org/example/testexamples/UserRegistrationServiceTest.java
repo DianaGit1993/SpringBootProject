@@ -1,5 +1,8 @@
-package org.example;
+package org.example.testexamples;
 
+import org.example.testexamples.EmailService;
+import org.example.testexamples.User;
+import org.example.testexamples.UserRegistrationService;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -34,7 +37,6 @@ public class UserRegistrationServiceTest {
         //clean after every test
         System.out.println("Finished one test");
     }
-
 
     @AfterAll
     public static void cleanAfterAllTest(){
@@ -74,9 +76,10 @@ public class UserRegistrationServiceTest {
         User userForTesting = User.builder().id(1).name("Jhon").build();
         when(emailService.sendConfirmationEmail(userForTesting.getName())).thenReturn("Email was sent.");
 
+        // WHEN
          userRegistrationService.registerUser(userForTesting);
 
+         //THEN
          Mockito.verify(emailService, Mockito.times(1)).sendConfirmationEmail(userForTesting.getName());
-
     }
 }

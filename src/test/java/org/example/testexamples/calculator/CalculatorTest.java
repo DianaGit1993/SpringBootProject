@@ -1,6 +1,6 @@
 //package org.example.calculator;
 //
-//import org.example.Calculator;
+//import org.example.testexamples.Calculator;
 //import org.junit.jupiter.api.Assertions;
 //import org.junit.jupiter.api.Test;
 //

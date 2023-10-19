@@ -1,0 +1,47 @@
+What is unit testing?
+a) Testing individual code components or functions X
+b) Testing the entire application as a whole
+c) Testing the user interface only
+d) Testing the application's integration with external systems
+
+What is JUnit, and how is it used in Java unit testing?
+a) A Java IDE
+b) A mocking framework
+c) A unit testing framework X
+d) A database management tool
+
+Explain the purpose of the @Test annotation in JUnit.
+a) It defines a setup method for the test.
+b) It marks a method as a test method to be executed by JUnit. x
+c) It defines a teardown method for the test.
+d) It marks a method as a stub for future testing.
+
+How do you verify that a specific method call was made on a mocked object using Mockito?
+a) Use assertEquals() to check the method call.
+b) Use verify() method with the mocked object. X
+c) Use expect() method with the mocked object.
+d) Use assertCall() to verify the method call.
+
+What is a mock object in unit testing, and why is it useful?
+a) A real object used for integration testing.
+b) An object that simulates the behavior of a real object. X
+c) A component of JUnit.
+d) A type of exception handling.
+
+In JUnit, what is the purpose of @Before and @After annotations?
+a) They define which test cases to run.
+b) They specify test data.
+c) They mark methods that run before and after each test method. X
+d) They define expected outcomes.
+
+What is the Arrange-Act-Assert pattern in unit testing?
+a) It's a design pattern used in unit testing.
+b) It's a type of code refactoring.
+c) It's a pattern that helps structure test methods by separating setup, execution, and verification. X
+d) It's an anti-pattern in unit testing.
+
+Name a best practice for writing effective unit tests.
+a) Avoid using mock objects.
+b) Ensure tests are independent and isolated.
+c) Test only the public methods of a class.
+d) Write tests that execute quickly.

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.testexamples;
 
 import lombok.Builder;
 import lombok.Getter;

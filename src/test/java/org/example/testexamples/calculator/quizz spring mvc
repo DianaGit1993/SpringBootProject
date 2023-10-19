@@ -1,0 +1,39 @@
+What is Spring MVC?
+a) A database management tool
+b) A server-side web framework for building web applications
+c) A design pattern for microservices
+
+What is the role of the DispatcherServlet in a Spring MVC application?
+a) Handling static resources
+b) Managing database connections
+c) Handling HTTP requests and routing them to the appropriate controllers
+
+In Spring MVC, what is the purpose of a Controller?
+a) To define database entities
+b) To manage the application's security
+c) To handle user requests and produce responses
+
+What is a ViewResolver in Spring MVC?
+a) A component for routing requests to controllers
+b) A mechanism for resolving logical view names to actual view templates
+c) A tool for managing database connections
+
+How can you pass data from a Controller to a View in Spring MVC?
+a) Through HTTP request headers
+b) By using the @ResponseBody annotation
+c) By adding attributes to the Model
+
+What does the @RequestMapping annotation in a Controller class indicate?
+a) The database table to query
+b) The URL path or HTTP method that a method should respond to
+c) The session management strategy to use
+
+What is the purpose of the Model in Spring MVC?
+a) To represent the database schema
+b) To store data that needs to be displayed in the View
+c) To manage database transactions
+
+What is the Spring Boot framework, and how does it relate to Spring MVC?
+a) Spring Boot is an alternative to Spring MVC.
+b) Spring Boot is an extension of the Spring Framework that simplifies the setup and development of Spring MVC applications.
+c) Spring Boot is a database management tool.

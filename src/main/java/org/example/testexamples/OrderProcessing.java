@@ -1,10 +1,10 @@
-package org.example;
+package org.example.testexamples;
 
 public class OrderProcessing {
 
     private SMSNotification smsNotification;
 
-    OrderProcessing(SMSNotification smsNotification){
+   public OrderProcessing(SMSNotification smsNotification){
         this.smsNotification = smsNotification;
     }
 

@@ -1,12 +1,13 @@
-package org.example;
+package org.example.testexamples;
 
-import com.sun.source.tree.ModuleTree;
+import org.example.testexamples.Order;
+import org.example.testexamples.OrderProcessing;
+import org.example.testexamples.SMSNotification;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.internal.matchers.Or;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.Mockito.when;

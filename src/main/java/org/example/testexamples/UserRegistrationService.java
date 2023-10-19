@@ -1,4 +1,4 @@
-package org.example;
+package org.example.testexamples;
 
 import java.util.Objects;
 
@@ -17,6 +17,7 @@ public class UserRegistrationService {
         System.out.println("Registering new user "+ user);
         String message = emailService.sendConfirmationEmail(user.getName());
         System.out.println(message);
+
         return user.toString();
     }
 }
