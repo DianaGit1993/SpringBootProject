@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.testexamples.Calculator;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
