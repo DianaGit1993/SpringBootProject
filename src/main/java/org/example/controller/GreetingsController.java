@@ -13,8 +13,8 @@ public class GreetingsController {
         return "Welcome";
     }
 
-    @GetMapping("/greetingsAndrei")
-    public String test123(){
-        return "Salut Andrei";
+    @GetMapping("/home")
+    public String home(){
+        return "home";
     }
 }
