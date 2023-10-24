@@ -15,6 +15,9 @@ public class GreetingsController {
 
     @GetMapping("/greetings")
     public String greetings(User user){
+        //validate user
+        //store user in db
+        //
         System.out.println("inside the greetings method");
         return "Welcome";
     }
