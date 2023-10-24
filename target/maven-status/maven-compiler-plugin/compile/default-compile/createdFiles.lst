@@ -1,4 +1,11 @@
-org\example\UserRegistrationService.class
-org\example\Main.class
-org\example\User$UserBuilder.class
-org\example\User.class
+org\example\TestExampleR\OrderProcessingR.class
+org\example\controller\GreetingsControllerR.class
+org\example\TestExampleR\EmailServiceR.class
+org\example\TestExampleR\SMSNotificationR.class
+org\example\TestExampleR\UserR.class
+org\example\TestExampleR\UserRegistrationServiceR.class
+org\example\TestExampleR\OrderR.class
+org\example\TestExampleR\UserR$UserRBuilder.class
+org\example\MainR.class
+org\example\TestExampleR\CalculatorR.class
+org\example\TestExampleR\OrderR$OrderRBuilder.class
