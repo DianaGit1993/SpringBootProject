@@ -1,4 +1,4 @@
-package org.example.Test.Tema1.challenge1;
+package org.example.Tema1.challenge1;
 
 import org.example.Tema1.challenge1.StringUtility;
 import org.junit.jupiter.api.Assertions;

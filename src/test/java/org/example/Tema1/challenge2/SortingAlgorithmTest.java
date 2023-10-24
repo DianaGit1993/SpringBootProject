@@ -1,4 +1,4 @@
-package org.example.Test.Tema1.challenge2;
+package org.example.Tema1.challenge2;
 
 import org.example.Tema1.challenge2.SortingAlgorithm;
 import org.junit.jupiter.api.Assertions;
