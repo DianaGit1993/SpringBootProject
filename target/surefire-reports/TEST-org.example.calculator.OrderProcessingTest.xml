@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.example.UserRegistrationServiceTest" time="0.167" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.example.calculator.OrderProcessingTest" time="1.4" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -57,24 +57,9 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testRegisterUserWithEmailConfirmation" classname="org.example.UserRegistrationServiceTest" time="0.118">
-    <system-out><![CDATA[Running test for UserRegistrationService
-Starting new test
-Registering new user User(id=1, name=Jhon)
-Email was send.
-Finished one test.
-]]></system-out>
-  </testcase>
-  <testcase name="testRegisterUser" classname="org.example.UserRegistrationServiceTest" time="0.011">
-    <system-out><![CDATA[Starting new test
-Registering new user User(id=1, name=Jhon)
-null
-Finished one test.
-]]></system-out>
-  </testcase>
-  <testcase name="testRegisterUserThrowsExceptionWhenUserIsNull" classname="org.example.UserRegistrationServiceTest" time="0.011">
-    <system-out><![CDATA[Starting new test
-Finished one test.
+  <testcase name="TestOrderProcessing" classname="org.example.calculator.OrderProcessingTest" time="1.379">
+    <system-out><![CDATA[Order details: Order(id=1, customer=Jhon, product=Iphone)
+Notification Sent (mocked)
 ]]></system-out>
   </testcase>
 </testsuite>
