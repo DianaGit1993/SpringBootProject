@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Book</title>
+    <style>
+        /* Stilurile CSS rămân neschimbate */
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .recipe {
+            border: 2px solid #ccc;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .recipe h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .recipe p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .search-form {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .search-form input[type="text"] {
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .search-button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Recipe Book</h1>
+</header>
+<div class="container">
+    <h2>Browse Recipes</h2>
+    <div class="recipe">
+        <h2>Ochiuri cu branza si spanac</h2>
+        <p class="ingredients">Ingredients: 2 oua, 30 g de branza, o mana de frunze de spanac</p>
+        <p class="steps">Preparation Steps: (Bate cele două ouă într-un bol.
+            Adaugă brânza rasă în ouă și amestecă bine.
+            Încinge o tigaie antiaderentă la foc mediu și adaugă frunzele de spanac. Gatiti-le pana cand se înmoaie.
+            Toarnă amestecul de ouă și brânză peste spanac în tigaie.
+            Gatiti omleta timp de 2-3 minute pe fiecare parte sau până când este coaptă după preferința ta. Servește-o caldă.)</p>
+        <p class="time">Cooking Time: 15 minutes</p>
+    </div>
+    <div class="recipe">
+        <h2>Smoothie cu banane și căpșuni</h2>
+        <p class="ingredients">Ingredients: 2 banane coapte, 1 cană de căpșuni proaspete sau congelate, 1 cană de lapte sau lapte de migdale</p>
+        <p class="steps">Preparation Steps: (Taie bananele și căpșunile în bucăți mai mici.
+            Pune fructele tăiate într-un blender.
+            Adaugă laptele sau laptele de migdale în blender.
+            Amestecă toate ingredientele până obții un smoothie cremos.
+            Servește smoothie-ul imediat sau păstrează-l în frigider pentru mai târziu.)</p>
+        <p class="time">Cooking Time: 5 minutes</p>
+    </div>
+    <div class="recipe">
+        <h2>Salata Caprese</h2>
+        <p class="ingredients">Ingredients: 2 roșii mari, 100 grame de mozzarella proaspătă, o mână de frunze proaspete de busuioc</p>
+        <p class="steps">Preparation Steps: (Taie roșiile și mozzarella în felii subțiri.
+            Așează alternativ feliile de roșii și mozzarella pe un platou.
+            Presară frunzele proaspete de busuioc deasupra.
+            Poți stropi salata cu puțin ulei de măsline și oțet balsamic, dacă dorești.
+            Servește salata Caprese ca aperitiv sau alături de felul principal.)</p>
+        <p class="time">Cooking Time: 5 minutes</p>
+    </div>
+
+    <!-- Mai poți adăuga alte rețete aici, dacă dorești -->
+
+    <h2>Search Recipes</h2>
+    <form>
+    <div class="search-form">
+        <input type="text" id="searchInput" placeholder="Search by Name">
+        <button class="search-button" onclick="searchRecipes()">Search</button>
+    </div>
+    <div id="searchResults">
+        <!-- Rezultatele căutării vor fi afișate aici -->
+    </div>
+    </form>
+</div>
+</body>
+</html>

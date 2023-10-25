@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import java.util.List;
 import java.util.Objects;
 
@@ -22,9 +23,20 @@ public class RestaurantController
             .name("Restaurant2")
             .id(2)
             .type("type2")
-            .numberOfTable(32)
+            .numberOfTable(8)
             .build();
     List<Restaurant> restaurantlist=List.of(restaurant1,restaurant2);
+    @GetMapping("/restaurant")
+    public String getRestaurants()
+    {
+
+
+
+
+        return "restaurants";
+    }
+
+
 
 
 
