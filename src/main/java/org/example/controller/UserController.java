@@ -22,8 +22,8 @@ public class UserController {
     }
 
     @GetMapping("/getUsersByFirstName/{firstName}")
-//    public List<User> getUsersByFirsdwwqdwtName(@RequestParam String firstName){ -> Query param ?firstName=alex
-    public List<User> getUsersByFirsdwwqdwtName(@PathVariable String firstName){ // -> Path param ../23 (23 fiind id-ul)
+//    public List<User> getUsersByFirstName(@RequestParam String firstName){ -> Query param ?firstName=alex
+    public List<User> getUsersByFirstName(@PathVariable String firstName){ // -> Path param ../23 (23 fiind id-ul)
         return userService.findUsersByFirstName(firstName);
     }
 
