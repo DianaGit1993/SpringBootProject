@@ -5,6 +5,7 @@ import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,8 +21,9 @@ public class UserController {
         this.userService=userService;
     }
 
-    @GetMapping("/getUsersByFirstName")
-    public List<User> getUsersByFirstName(@RequestParam String firstName){
+    @GetMapping("/getUsersByFirstName/{firstName}")
+//    public List<User> getUsersByFirsdwwqdwtName(@RequestParam String firstName){ -> Query param ?firstName=alex
+    public List<User> getUsersByFirsdwwqdwtName(@PathVariable String firstName){ // -> Path param ../23 (23 fiind id-ul)
         return userService.findUsersByFirstName(firstName);
     }
 
