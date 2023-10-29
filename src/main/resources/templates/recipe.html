@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>RecipeBook</title>
+    <style>
+    
+    body{
+        font-family: "Frank Ruhl Libre",Georgia,serif;
+        line-height: 1.725rem;
+        letter-spacing: .0725rem;
+        vertical-align: bottom;
+        color: #222;
+        font-size: 1.025rem;
+        margin:0;
+    }
+    
+    .stickyHeader {
+        width:97%;
+        height:60px;
+        display:flex;
+        padding: 10px;
+        margin:0 1%;
+        position: -webkit-sticky; /* For Safari */
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display:flex;
+      
+        background-color:#fff;
+        border-bottom:1px solid #ffd977;
+    }
+    
+    .headerText {
+        display:flex;
+        flex-direction:column;
+        padding-top:10px;
+        padding-left:60px;
+        color: #177;
+    }
+    
+    .upperText {
+        font-size: 2.625rem;
+        font-weight: 500;
+    }
+    
+    .lowerText {
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #222;
+        padding-left:6px;
+    }
+    
+  
+    
+    .headerRightComponents {
+        display:flex;
+        gap:50px;
+        align-items:center;
+        position:absolute;
+        right:15px;
+       
+    }
+    .someButton{
+        display:flex;
+        background-color:#ffd977;
+        border-radius:5px;
+         max-width:200px;
+        max-height:26px;
+        padding:10px 30px;;
+        align-items:center;
+        border:1px solid #ffd977
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        cursor:pointer;
+
+    }
+    .someButton:hover{
+        scale:0.97;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    }
+    
+    .icons {
+        display:flex;
+        gap:20px;
+    }
+    .icons img{
+        width:28px;
+        height:28px;
+       
+    }
+    
+    .icons img:hover{
+        cursor:pointer;
+    }
+    
+    
+    main {
+        display:flex;
+        flex-direction:column;
+        width:64%;
+        margin:0 auto;
+        padding-top:40px;
+        gap:20px;
+        padding-bottom:80px;
+    }
+    
+    @media screen and (max-width: 600px) {
+        main {
+            width:100%;
+        }
+    }
+    @media screen and (min-width:601px) and  (max-width: 992px)  {
+        main{
+            width:86%;
+        }
+    }
+
+
+    .titleFormat {
+        font-size: 2.225rem;
+        padding-left:5px;
+        font-weight: 500;
+        line-height: 1.6em;
+        margin-bottom:20px;
+    }
+
+    .titleSmallerFormat {
+       font-size:2.025rem;
+       font-weight: 400;
+    }
+
+    .titleSmallestFormat {
+       font-size:1.725rem;
+       font-weight: 400;
+       margin-bottom:8px;
+    }
+
+    .recipeDescription {
+        text-align: left;
+        padding: 0;
+        font-size: 1.25rem;
+        line-height: 1.15;
+        color: #666;
+        margin-bottom: 1.123rem;
+    }
+
+    .recipeInfo {
+        display:flex;
+        flex-direction:column;
+
+        color:#222;
+        font-size:1rem;
+        line-height:1.45;
+    }
+    
+    .author {
+        font-weight:700;
+    }
+    
+    .date {
+       color: #424242;
+       font-family: Roboto,Helvetica,sans-serif;
+    }
+    
+    .recipeImage {
+       margin-top:30px;
+       max-width:800px;
+       max-height:600px;
+       margin-bottom:30px;
+       border-radius: 2px;
+    }
+
+    .recipe {
+        max-width:800px;
+        background: linear-gradient(to bottom, #c6eded, #e0f2f2, white);
+        padding:14px;
+        display:flex;
+        flex-direction:column;
+        gap:15px;
+
+        line-height: 1.225rem;
+        letter-spacing: .0625rem;
+        vertical-align: bottom;
+        color: #222;
+        margin-bottom: 2px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .recipeDetailsLayout {
+        display:flex;
+        width:100%;
+        text-align:left;
+        padding:5px;
+        gap:30px;
+    }
+
+    .infoName {
+       width:30%;
+       font-weight: 700;
+       font-size: .875rem;
+       line-height: 1.1429;
+       letter-spacing: .0625rem;
+       text-transform: uppercase;
+       width: 6.875rem;
+    }
+
+    .info {
+        font-family: Roboto,Helvetica,sans-serif;
+    }
+
+
+
+    .recipeSectionDiv {
+       display:flex;
+       flex-direction:column;
+    }
+
+    .colored-list {
+        list-style: none;
+        padding: 0;
+        font-family: Roboto,Helvetica,sans-serif;
+    }
+
+    .colored-list li {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .bullet {
+        display: inline-block;
+        width: 8px;
+        height:8px;
+        border-radius: 50%;
+        margin-right: 10px;
+        background-color:#177
+    }
+
+    .recipeStep {
+        display:flex;
+        flex-direction:column;
+        padding:16px;
+    }
+
+    .stepDescription {
+        font-family: Roboto,Helvetica,sans-serif;
+    }
+
+    .nutritionDiv {
+        display:flex;
+        flex-direction:column;
+        max-width:600px;
+        padding:40px;
+        border:2px solid #177;
+        border-radius:10px;
+        position:relative;
+        margin-top:30px;
+    }
+
+
+
+    .absoluteTitle {
+        position:absolute;
+        margin-top: 6px;
+        margin-left:30px;
+        z-index:10;
+        background-color:#fff;
+        padding:10px;
+        border-radius:8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .nutritionElementsDiv {
+        display:flex;
+        justify-content:space-between;
+        padding-bottom:16px;
+        border-bottom:0.1rem solid #bdefef9e;
+    }
+
+    .nutritionElement {
+        display:flex;
+        flex-direction:column;
+    }
+
+    .nutritionNote {
+        font-family: Roboto,Helvetica,sans-serif;
+        font-size: .775rem;
+        line-height: 1.1429;
+        letter-spacing: .0825rem;
+        padding-top:18px;
+    }
+
+
+    .coloredText {
+        color: #177;
+    }
+
+    .blackText {
+        color: #222;
+    }
+
+    .underlineDiv {
+        border-bottom:0.01rem solid #177;
+        padding-bottom:10px;
+        padding-top:15px;
+    }
+
+    .boldText {
+        font-weight:700;
+     }
+
+    .smallerText {
+        font-size: .775rem;
+        line-height: 1.1429;
+        letter-spacing: .0825rem;
+    }
+    
+    .uppercaseText{
+        text-transform: uppercase;
+    }
+    
+    .marginLeft5px{
+        margin-left:5px;
+    }
+
+
+
+
+
+
+    
+    
+    </style>
+</head>
+<body>
+<div class="container">
+    <header class="stickyHeader">
+        <div class="headerText">
+            <span class="upperText">Recipe</span>
+            <span class="lowerText">Book</span>
+        </div>
+        <div class="headerRightComponents">
+            <div class="someButton">
+                <span>Dummy Button</span>
+            </div>
+            <div class="icons">
+               
+                <img th:src="@{/images/searchIcon.png}" alt="icon2"/>
+                <img th:src="@{/images/userProfile.png}"  alt="icon1"/>
+            </div>
+        </div>
+       
+    </header>
+    
+    <main>
+        <!--RECIPE TITLE (top of page) -->
+        <div class="titleFormat">
+            <span th:text="${recipe.title}"></span>
+        </div>
+        <!--RECIPE  SHORT DESCRIPTION (top of page) -->
+        <div class="recipeDescription">
+            <span th:text="${recipe.shortDescription}"></span>
+        </div>
+        <!--RECIPE AUTHOR AND POST DATE (top of page) -->
+        <div class="recipeInfo">
+            <span>By <span th:text="${recipe.recipeAuthor}" class="author">SARAH EPPERSON</span></span>
+            <span class="date">Update <span th:text="${recipe.uploadDate}"
+                                            class="date">Update June 05,2023</span></span>
+        </div>
+        <img class="recipeImage" th:src="@{${recipe.imageUrl}}" alt="recipeImage">
+        
+        
+        <!-- RECIPE SECTION -->
+        <div class="recipe">
+            <div class="recipeSectionDiv underlineDiv ">
+                <span class="titleFormat titleSmallerFormat "
+                      th:text="${recipe.title}"></span>
+                <!--PREP TIME SECTION -->
+                <div class="recipeDetailsLayout">
+                    <span class="infoName coloredText">PREP TIME</span>
+                    <span class="info"
+                          th:text="${recipe.prepTime}"></span>
+                </div>
+                <!--COOKING TIME SECTION -->
+                <div class="recipeDetailsLayout">
+                    <span class="infoName coloredText">cook time</span>
+                    <span class="info"
+                          th:text="${recipe.cookingTime}"></span>
+                </div>
+                <!--TOTAL TIME SECTION -->
+                <div class="recipeDetailsLayout">
+                    <span class="infoName coloredText">total time</span>
+                    <span class="info"
+                          th:text="${recipe.totalTime}"></span>
+                </div>
+            
+            
+            </div>
+            <div class="recipeSectionDiv">
+                <!--SERVINGS SECTION -->
+                
+                <div class="recipeDetailsLayout">
+                    <span class="infoName "> SERVINGS</span>
+                    <span class="info"
+                          th:text="${recipe.servings}"></span>
+                </div>
+            
+            
+            </div>
+            
+            <!--INGREDIENTS SECTION -->
+            <div class="recipeSectionDiv">
+                <!-- TITLE -->
+                <span class="titleFormat titleSmallerFormat underlineDiv ">Ingredients</span>
+                <!-- LIST OF INGREDIENTS -->
+                <ul class="colored-list">
+                    <li th:each="ingredient : ${recipe.ingredients}">
+                        <span class="bullet "></span>
+                        <span th:text="${ingredient}"></span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- METHOD SECTION -->
+            <div class="recipeSectionDiv">
+                <span class="recipeTitle titleSmallerFormat underlineDiv ">Method</span>
+                <!-- STEP -->
+                
+                <div th:each="step,index : ${recipe.cookingMethodSteps}" class="recipeStep">
+                    <div class="stepTitle titleFormat titleSmallestFormat">
+                        <span class="coloredText" th:text="${index.index +1}+'. '"></span>
+                        <span class="blackText" th:text="${step.stepTitle}"></span>
+                    
+                    </div>
+                    
+                    
+                    <span class="stepDescription" th:text="${step.stepDescription}"></span>
+                </div>
+            
+            </div>
+        
+        
+        </div>
+        
+        <!-- NUTRITION SECTION -->
+        <div class="recipeSectionDiv">
+            <div class="absoluteTitle">
+                <span class="coloredText boldText">NUTRITION FACTS</span>
+                <span class="smallerText">(PER SERVINGS)</span>
+            </div>
+            <div class="nutritionDiv">
+                <div class="nutritionElementsDiv">
+                    <div class="nutritionElement">
+                        <span class="coloredText" th:text="${recipe.nutrition.calories}"></span>
+                        <span>CALORIES</span>
+                    </div>
+                    <div class="nutritionElement">
+                        <span class="coloredText" th:text="${recipe.nutrition.fat}"></span>
+                        <span>FAT</span>
+                    </div>
+                    <div class="nutritionElement">
+                        <span class="coloredText" th:text="${recipe.nutrition.carbs}"></span>
+                        <span>CARBS</span>
+                    </div>
+                    <div class="nutritionElement">
+                        <span class="coloredText" th:text="${recipe.nutrition.protein}"></span>
+                        <span>PROTEIN</span>
+                    </div>
+                </div>
+                <div class="nutritionNote">
+                    <span>
+                        Nutrition information is calculated using an ingredient database and should be considered an estimate. In cases where multiple ingredient alternatives are given, the first listed is calculated for nutrition. Garnishes and optional ingredients are not included.
+                    </span>
+                
+                </div>
+            </div>
+        
+        
+        </div>
+    
+    
+    </main>
+
+</div>
+
+</body>
+</html>

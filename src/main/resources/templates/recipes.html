@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Recipe Book</title>
+    <style>
+    body{
+      font-family: "Frank Ruhl Libre",Georgia,serif;
+        line-height: 1.725rem;
+        letter-spacing: .0725rem;
+        vertical-align: bottom;
+        color: #222;
+        font-size: 1.025rem;
+        margin:0;
+        
+    }
+ .stickyHeader {
+        width:97%;
+        height:60px;
+        display:flex;
+        padding: 10px;
+        margin:0 1%;
+        position: -webkit-sticky; /* For Safari */
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display:flex;
+      
+        background-color:#fff;
+        border-bottom:1px solid #ffd977;
+    }
+    
+    .headerText {
+        display:flex;
+        flex-direction:column;
+        padding-top:10px;
+        padding-left:60px;
+        color: #177;
+    }
+    
+    .upperText {
+        font-size: 2.625rem;
+        font-weight: 500;
+    }
+    
+    .lowerText {
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #222;
+        padding-left:6px;
+    }
+    
+  
+    
+    .headerRightComponents {
+        display:flex;
+        gap:50px;
+        align-items:center;
+        position:absolute;
+        right:15px;
+       
+    }
+    .someButton{
+        display:flex;
+        background-color:#ffd977;
+        border-radius:5px;
+         max-width:200px;
+        max-height:26px;
+        padding:10px 30px;;
+        align-items:center;
+        border:1px solid #ffd977
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        cursor:pointer;
+
+    }
+    .someButton:hover{
+        scale:0.97;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    }
+    
+    .icons {
+        display:flex;
+        gap:20px;
+    }
+    .icons img{
+        width:28px;
+        height:28px;
+       
+    }
+    
+    .icons img:hover{
+        cursor:pointer;
+    }
+
+
+    .container{
+        width: 70%;
+
+        margin: 0 auto;
+       
+
+    }
+    @media screen and (max-width: 600px) {
+        .container {
+            width:100%;
+        }
+    }
+    @media screen and (min-width:601px) and  (max-width: 992px)  {
+        .container{
+            width:86%;
+        }
+    }
+     @media screen and (min-width:993px) and  (max-width: 1200px)  {
+        .container{
+            width:80%;
+        }
+    }
+     @media screen and (min-width:1201px) and  (max-width: 1400px)  {
+        .container{
+            width:76%;
+        }
+    }
+
+
+    .introTitle {
+        font-size:2.025rem;
+       
+        font-weight:500;
+        line-height:1.6em;
+        padding: 20px 0px 40px 10px;
+        color:#555555;
+    }
+
+    .navigation {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        list-style: none;
+        margin: 0;
+        background: #fff;
+        border-bottom: solid #004d4d;
+        padding-bottom:10px;
+    }
+    .navigation li {
+       position: relative;
+    }
+    a{
+    text-decoration:none;
+    }
+
+    .navigation a {
+        text-decoration: none;
+        position: relative;
+        font-family: Roboto,Helvetica,sans-serif;
+        font-size: .875rem;
+        font-weight: 700;
+        line-height: 1.14;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #004d4d;
+    }
+
+    .navigation a:hover {
+        color: #b5460f
+    }
+
+
+    .underline{
+      position: absolute;
+        bottom: -20px; /* Adjust the position to control the distance from the text */
+        left: 50%;
+        transform: translateX(-50%); /* Center the arrow horizontally */
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #004d4d; /* Set the color of the arrow */
+    }
+
+    .underline-layer {
+        position: absolute;
+        bottom:-16px; /* Adjust the position to control the distance from the text */
+        left: 50%;
+        transform: translateX(-50%); /* Center the arrow horizontally */
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-top: 7px solid #f1f9f8; /* Set the color of the arrow */
+    }
+
+
+   .recipesContainer{
+        min-height:100vh;
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:20px;
+        background-color:#f1f9f8;
+
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        margin: 0 auto;
+    }
+         @media screen and (max-width: 600px) {
+            .recipesContainer{
+               grid-template-columns: 1fr;
+             }
+         }
+       @media screen and (min-width:601px) and  (max-width: 992px)  {
+         .recipesContainer{
+           
+            grid-template-columns:repeat(2,1fr);
+            
+       }
+
+
+
+
+
+
+}
+
+
+    .recipeBox{
+
+      background-color:#fff;
+      display:flex;
+      flex-direction:column;
+      padding:10px;
+      max-height:400px;
+
+      margin-bottom:20px;
+      gap:15px;
+      font-weight: 400;
+      border-radius:5px;
+      color: #333;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      cursor:pointer;
+
+    }
+    .recipeBox:hover{
+
+      scale:1.02;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+
+    }
+
+    .recipeBox img{
+       width:100%;
+      height:60%;
+       border-radius:1%;
+
+    }
+
+    .recipeCategory{
+        color: #b5460f;
+        text-decoration: none;
+        padding-left:5px;
+        font-family: Roboto,Helvetica,sans-serif;
+        font-size: .875rem;
+        font-weight: 700;
+        line-height: 1.14;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .recipeTitle{
+        font-size: 1.525rem;
+        padding-left:5px;
+        font-weight: 700;
+        line-height: 1.4em;
+        font-family: "Frank Ruhl Libre",Georgia,serif;
+    }
+    .recipeTime{
+      display:flex;
+      gap:5px;
+      align-items:center;
+    }
+    .recipeTime img{
+      width:24px;
+       height:24px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+<header class="stickyHeader">
+    <div class="headerText">
+        <span class="upperText">Recipe</span>
+        <span class="lowerText">Book</span>
+    </div>
+    <div class="headerRightComponents">
+        <div class="someButton">
+            <span>Dummy Button</span>
+        </div>
+        <div class="icons">
+            
+            <img th:src="@{/images/searchIcon.png}" alt="icon2"/>
+            <img th:src="@{/images/userProfile.png}"  alt="icon1"/>
+        </div>
+    </div>
+
+</header>
+
+<div class="container">
+    <div class="introTitle">
+        <span th:text="'Explore '+${currentCategory} + ' recipes'"></span>
+      
+    </div>
+    <ul  class="navigation" >
+
+        <li th:each="category : ${categories}">
+            <a th:href="@{'/recipes?category=' + ${category}}">
+                <span th:text="${category}"></span>
+            </a>
+            <div th:if="${currentCategory== category }">
+                <div class="underline"></div>
+                <div class="underline-layer"></div>
+            </div>
+
+        </li>
+
+    </ul>
+
+    <div class="recipesContainer" >
+            <a th:href="@{'/recipes/' + ${recipe.title}}" class="recipeBox" th:each="recipe : ${recipes}">
+                <img th:src="@{${recipe.imageUrl}}" alt="Image">
+                <span class="recipeCategory"  th:text="${recipe.category}">Category</span>
+                <span class="recipeTitle" th:text="${recipe.title}"></span>
+                <div class="recipeTime">
+                    <img th:src="@{images/clock.png}"  alt="icon">
+                    <span  th:text="${recipe.totalTime}"></span>
+                </div>
+
+            </a>
+
+    </div>
+</div>
+
+
+
+</body>
+</html>
