@@ -21,6 +21,7 @@ public class RecipeController {
 
     // == Fields ==
     private final RecipeService recipeService;
+    private StringBuilder message = new StringBuilder();
 
     // == Constructors ==
     @Autowired
@@ -41,7 +42,8 @@ public class RecipeController {
     }
 
    @GetMapping(RecipeMappings.ADD_RECIPES)
-    public String goHome() {
+    public String goHome(Model model) {
+        model.addAttribute("message", message.toString());
         return ViewNames.ADD_RECIPES;
     }
 
@@ -50,9 +52,18 @@ public class RecipeController {
                                  @RequestParam String preparationSteps, @RequestParam String cookingTime) {
         log.info("name = {}, ingredients = {}, preparationSteps = {}, cookingTime = {}",
                 name, ingredients, preparationSteps, cookingTime);
-
-        log.info("Recipe added = {}",
-                recipeService.addRecipe(name, ingredients, preparationSteps, cookingTime));
+        boolean result = recipeService.addRecipe(name, ingredients, preparationSteps, cookingTime);
+        log.info("Recipe successfully added = {}", result);
+        message.append(message.isEmpty() ? "" : "<br><br>")
+                .append("Operation was successful: " + result)
+                .append("<br>")
+                .append(String.format("name = [%s]", name.trim()))
+                .append("<br>")
+                .append(String.format("ingredients = [%s]", ingredients.trim()))
+                .append("<br>")
+                .append(String.format("prep. steps = [%s]", preparationSteps.trim()))
+                .append("<br>")
+                .append(String.format("time = [%s]", cookingTime.trim()));
 
         return RecipeMappings.REDIRECT_ADD_RECIPES;
     }

@@ -6,4 +6,8 @@
           th:href="@{__${@recipeMappings.ADD_RECIPES}__}" />
     <attr sel="#linkId"
           th:href="@{/css/home-styles.css}" />
+    <attr sel="#footerId"
+          th:insert="~{fragments/fragments :: footerFragment}"
+          th:utext="#{game.footer}" />
+
 </thlogic>

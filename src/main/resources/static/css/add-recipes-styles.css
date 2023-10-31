@@ -8,22 +8,20 @@ body {
     margin: 0px;
     padding: 0px;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: left;
-    gap: 5px;
+    align-items: flex-end;
+    align-items: right;
+    justify-content: right;
+    gap: 15px;
 }
 
 .container div {
-    margin-bottom: 0px;
-    align-items: top;
-    display: inline;
-    gap: 5px;
+    display: inline-block;
 }
 
 .container input, textarea {
-    width: 100%;
+    min-width: 350px;
     padding: 10px 10px;
-    margin-bottom: 10px;
+/*    margin-bottom: 10px; */
     border: 1px solid #ccc;
     border-radius: 3px;
     box-sizing: border-box;
@@ -31,12 +29,15 @@ body {
 
 .container textarea {
     resize: none;
+    vertical-align: top;
+    margin-top: -10px;
 }
 
 .container label {
     font-size: 80%;
-    padding: 10px 0px;
-    margin-bottom: 10px;
+    padding: 10px 10px;
+    margin-top: 10px;
+    text-align: right;
 }
 
 .container button {
@@ -104,4 +105,26 @@ body {
     background-color: #4CAF50;
     color: white;
     cursor: pointer;
+}
+
+.subpage {
+    min-width: 500px;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    gap: 20px;
+}
+
+.subpage .info {
+    width: 200px;
+    height: 320px;
+    resize: scroll;
+    overflow: auto;
+    font-family: Verdana, sans-serif;
+    background-color: #f8f8f8;
+    font-size: 70%;
+    padding: 0px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
 }

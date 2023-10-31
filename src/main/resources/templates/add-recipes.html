@@ -11,15 +11,16 @@
     <a href="#" th:href="@{__${@recipeMappings.RECIPES}__}">Look for recipes</a>
   </div>
   <h1>Recipe Book</h1>
+  <div class="subpage">
   <form th:action="@{__${@recipeMappings.ADD_RECIPES}__}" id="recipe-add-form" method="post" class="container">
-    <div>
+    <div style="margin-bottom: 10px">
       <label for="recipe-name">Recipe name:</label>
       <input type="text" id="recipe-name" placeholder="Recipe name here" name="name">
     </div>
 
     <div>
       <label for="ingredients">Ingredients:</label>
-      <textarea id="ingredients" name="ingredients" rows="6" cols="40" placeholder="Ingredients here"></textarea>
+      <textarea id="ingredients" name="ingredients" rows="6" placeholder="Ingredients here"></textarea>
     </div>
 
     <div>
@@ -35,8 +36,14 @@
     <div>
       <button type="submit">Add recipe</button>
     </div>
-
   </form>
+
+    <div class="info">
+      <p style="font-weight: 900;color: #777777">Info:</p>
+      <p th:utext="${message}">The quick brown fox jumps over the lazy dog.</p>
+    </div>
+
+  </div>
 
   <footer id="footerId">&copy; 2023 <span>So delicious</span>. All rights reserved</footer>
 </div>
