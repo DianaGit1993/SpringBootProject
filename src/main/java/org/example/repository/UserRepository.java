@@ -9,9 +9,9 @@ import java.util.stream.Stream;
 @Repository
 public class UserRepository {
 
-   private User user1 = new User("alex","Jhon");
-   private User user2 = new User("Mike","Tyson");
-   private User user3 = new User("Erica","Smith");
+   private User user1 = new User("alex","Jhon","last","email",23,"password");
+   private User user2 = new User("Mike","Tyson","last","email@asdwed", 30, "pass1234");
+   private User user3 = new User("Erica","Smith","Jhon","email@test.fom",40, "wefwefwef");
 
     public List<User> findUsersByFirstName(String firstName){
         //run sql query to get user by username
