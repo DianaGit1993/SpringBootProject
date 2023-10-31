@@ -1,9 +1,8 @@
 package org.example.repository;
 
-import org.example.app.util.RecipeMappings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.example.model.Recipe;
+import org.example.models.Recipe;
 
 import java.util.List;
 

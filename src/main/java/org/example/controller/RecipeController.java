@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.app.util.AttributeNames;
 import org.example.app.util.RecipeMappings;
 import org.example.app.util.ViewNames;
-import org.example.model.Recipe;
+import org.example.models.Recipe;
 import org.example.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

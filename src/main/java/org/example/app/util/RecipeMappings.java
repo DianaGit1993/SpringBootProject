@@ -1,9 +1,6 @@
 package org.example.app.util;
 
-import org.example.model.Recipe;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component("recipeMappings")
 public final class RecipeMappings {

@@ -1,6 +1,6 @@
 package org.example.repository;
 
-import org.example.model.Recipe;
+import org.example.models.Recipe;
 
 import java.util.List;
 

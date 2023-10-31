@@ -2,7 +2,7 @@ package org.example.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.example.model.Recipe;
+import org.example.models.Recipe;
 import org.example.repository.RecipeRepositoryImpl;
 
 import java.util.List;
