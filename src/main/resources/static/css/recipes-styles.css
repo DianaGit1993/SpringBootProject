@@ -1,0 +1,151 @@
+body {
+    font-family: Verdana, sans-serif;
+    background-color: #f2f2f2;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+tr {
+    font-size: 80%;
+    vertical-align: top;
+}
+
+th {
+    font-size: 105%;
+    background-color: #7F7F7F;
+    color: white;
+}
+
+th, td {
+    text-align: left;
+    padding: 10px 15px;
+    border: 1px solid #CCC;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+tr:first-child th:first-child {
+    border-top-left-radius: 7px;
+}
+tr:first-child th:last-child {
+    border-top-right-radius: 7px;
+}
+tr:last-child td:first-child {
+    border-bottom-left-radius: 7px;
+}
+tr:last-child td:last-child {
+    border-bottom-right-radius: 7px;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+td:hover {
+    background-color: #FFFFE6;
+}
+
+ul {
+    display: inline-block;
+    list-style-type: none;
+    list-style-position: outside;
+    margin: 0px;
+    padding: 0px;
+}
+
+li {
+    margin: 0px 0px 5px 0px;
+}
+
+.container {
+    margin: 0px;
+    padding: 0px;
+}
+
+.container input[type="text"] {
+    padding: 3px 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.container button {
+    padding: 3px 10px;
+    margin-bottom: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: 1px solid #419645;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.container button:hover {
+    background-color: #45a049;
+}
+
+#footerId {
+    font-family: Calibri, sans-serif;
+    font-size: 80%;
+    margin: 20px 0px 0px 0px;
+}
+
+#footerId span {
+    font-style: italic;
+    font-weight: 900;
+    color: #4CAF50;
+}
+
+.page {
+    min-width: 600px;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin: 5px 10px;
+    padding: 25px 60px;
+    background-color: white;
+    border-radius: 3px 3px 24px 24px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+}
+
+#menu {
+    font-family: Calibri, sans-serif;
+    margin: 0px;
+    font-size: 80%;
+    color: black;
+    text-align: right;
+}
+
+#menu a {
+    width: 100%;
+    padding: 0px 10px;
+    font-style: italic;
+    font-weight: 900;
+    border-spacing: 0px;
+    border-right: 2px solid #AFAFAF;
+    text-decoration: none;
+    color: black;
+    justify-content: center;
+}
+
+#menu a:hover {
+    padding: 5px 15px;
+    border-right: 4px solid black;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.cell-content a {
+    width: 100%;
+    display: flex;
+    padding: 0px;
+    justify-content: left;
+}

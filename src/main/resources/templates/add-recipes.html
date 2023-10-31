@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Recipes</title>
+  <link rel="stylesheet" type="text/css" media="all" href="../static/css/add-recipes-styles.css" th:href="@{/css/add-recipes-styles.css}"/>
+</head>
+<body>
+<div class="page">
+  <div id="menu">
+    <a href="#" th:href="@{__${@recipeMappings.HOME}__}">Home</a>
+    <a href="#" th:href="@{__${@recipeMappings.RECIPES}__}">Look for recipes</a>
+  </div>
+  <h1>Recipe Book</h1>
+  <form th:action="@{__${@recipeMappings.ADD_RECIPES}__}" id="recipe-add-form" method="post" class="container">
+    <div>
+      <label for="recipe-name">Recipe name:</label>
+      <input type="text" id="recipe-name" placeholder="Recipe name here" name="name">
+    </div>
+
+    <div>
+      <label for="ingredients">Ingredients:</label>
+      <textarea id="ingredients" name="ingredients" rows="6" cols="40" placeholder="Ingredients here"></textarea>
+    </div>
+
+    <div>
+      <label for="preparation-steps">Preparation steps:</label>
+      <input type="text" id="preparation-steps" placeholder="Preparation steps here" name="preparationSteps">
+    </div>
+
+    <div>
+      <label for="cooking-time">Cooking time:</label>
+      <input type="number" step="0.1" id="cooking-time" placeholder="Cooking time here" name="cookingTime">
+    </div>
+
+    <div>
+      <button type="submit">Add recipe</button>
+    </div>
+
+  </form>
+
+  <footer id="footerId">&copy; 2023 <span>So delicious</span>. All rights reserved</footer>
+</div>
+</body>
+</html>

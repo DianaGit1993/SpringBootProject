@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<thlogic>
+    <attr sel="#click-recipe"
+          th:href="@{__${@recipeMappings.RECIPES}__}" />
+    <attr sel="#click-add-recipe"
+          th:href="@{__${@recipeMappings.ADD_RECIPES}__}" />
+    <attr sel="#linkId"
+          th:href="@{/css/home-styles.css}" />
+</thlogic>

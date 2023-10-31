@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Recipes</title>
+  <link rel="stylesheet" type="text/css" media="all" href="../static/css/recipes-styles.css" th:href="@{/css/recipes-styles.css}"/>
+</head>
+<body>
+<div class="page">
+  <div id="menu">
+    <a href="#" th:href="@{__${@recipeMappings.HOME}__}">Home</a>
+    <a href="#" th:href="@{__${@recipeMappings.ADD_RECIPES}__}">Add recipes</a>
+  </div>
+  <h1>Recipe Book</h1>
+  <form th:action="@{__${@recipeMappings.RECIPES}__}" id="recipe-search-form" method="get" class="container">
+    <label for="label-search">Recipe name:</label>
+    <input type="text" id="label-search" placeholder="Recipe name" name="name">
+    <button type="submit">Search</button>
+  </form>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Ingredients</th>
+        <th>Preparation Steps</th>
+        <th>Cooking Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <th:block th:if="${recipeBook == null || #lists.isEmpty(recipeBook)}">
+        <tr>
+          <td colspan="4"></td>
+        </tr>
+      </th:block>
+      <th:block th:unless="${recipeBook == null || #lists.isEmpty(recipeBook)}">
+        <tr th:each="recipe : ${recipeBook}">
+          <td th:text="${recipe.name}">Recipe name</td>
+<!--/*          <td><ul><li th:each="ingredient: ${recipe.ingredients}" th:text="${ingredient}">Ingredient</li></ul></td> */-->
+<!--/*          <td><table><tr th:each="ingredient: ${recipe.ingredients}"><td th:text="${ingredient}">Ingredient</td></tr></table></td> */-->
+          <td class="cell-content"><a th:each="ingredient: ${recipe.ingredients}" th:text="${ingredient}">Ingredient</a></td>
+          <td th:text="${recipe.preparationSteps}">Preparation steps</td>
+          <td th:text="${recipe.cookingTime}">Cooking time</td>
+        </tr>
+      </th:block>
+    </tbody>
+  </table>
+  <footer id="footerId">&copy; 2023 <span>So delicious</span>. All rights reserved</footer>
+</div>
+</body>
+</html>
