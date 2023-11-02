@@ -1,0 +1,25 @@
+package org.example.repository;
+
+import org.example.model.User;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.stream.Stream;
+
+@Repository
+public class UserRepository {
+
+//    private User user1 = new User("alex","Jhon", );
+//    private User user2 = new User("Mike","Tyson");
+//    private User user3 = new User("Erica","Smith");
+
+    private User user1 = new User("alex","Jhon", "last", "email", 23, "password");
+    private User user2 = new User("Mike","Tyson", "last", "email@aswd", 30, "pass1234");
+    private User user3 = new User("Erica","Smith", "last", "email@test.fom", 40, "wewe");
+    public List<User> findUsersByFirstName(String firstName){
+        //run sql query to get user by username
+        return Stream.of(user1, user2, user3).filter(user -> user.getFirstName()
+                .equals(firstName)).toList();
+    }
+
+}
