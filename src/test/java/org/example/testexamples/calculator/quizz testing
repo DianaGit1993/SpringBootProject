@@ -1,7 +1,7 @@
 What is unit testing?
 a) Testing individual code components or functions X
 b) Testing the entire application as a whole
-c) Testing the user interface only
+c) Testing the userDTO interface only
 d) Testing the application's integration with external systems
 
 What is JUnit, and how is it used in Java unit testing?

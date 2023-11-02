@@ -1,9 +1,9 @@
 package org.example.service;
 
-import org.example.model.User;
+import org.example.model.dtos.UserDTO;
+import org.example.model.entities.UserEntity;
 import org.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,15 +12,27 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
     @Autowired
-    UserService(UserRepository userRepository){
-        this.userRepository=userRepository;
+    UserService(UserRepository userRepository, UserMapper userMapper) {
+        this.userRepository = userRepository;
+        this.userMapper = userMapper;
     }
 
-    public List<User> findUsersByFirstName(String firstName){
+    public List<UserDTO> findUsersByFirstName(String firstName) {
         // validate, transform...
         return userRepository.findUsersByFirstName(firstName);
+    }
+
+    public UserDTO createUser(UserDTO userToCreateDTO) {
+        // translate from UserDTO -> UserEntity
+
+        UserEntity userEntity = userMapper.mapUserDTOtoUserEntity(userToCreateDTO);
+
+       UserEntity createdUserEntity = userRepository.createUser(userEntity);
+
+       return userMapper.mapUserEntityToUserDTO(createdUserEntity);
     }
 
 }

@@ -1,24 +1,24 @@
-package org.example.model;
+package org.example.model.entities;
 
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 @ToString
-public class User {
+public class UserEntity {
+
     private String firstName;
     private String lastName;
     private String username;
-
-    @NotBlank(message = "Emailul nu poate fi null.")
     private String email;
     private int age;
     private String password;
+
 }

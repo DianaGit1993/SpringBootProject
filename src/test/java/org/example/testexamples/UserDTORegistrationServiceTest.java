@@ -14,7 +14,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class UserRegistrationServiceTest {
+public class UserDTORegistrationServiceTest {
 
     @Mock
     EmailService emailService;
