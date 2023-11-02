@@ -1,9 +1,10 @@
 package org.example.repository;
 
 import org.example.model.Recipe;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public class RecipeRepository
 {
     Recipe recipe1=new Recipe("Ochiuri cu branza si spanac",
