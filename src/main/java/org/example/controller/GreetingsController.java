@@ -1,8 +1,7 @@
 package org.example.controller;
-import org.example.model.User;
+import org.example.model.dtos.UserDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class GreetingsController
@@ -13,7 +12,7 @@ public class GreetingsController
         return "home";
     }
         @GetMapping("/greetings")
-        public String greetings(User user)
+        public String greetings(UserDTO user)
         {
             //validate name
             //store user in db

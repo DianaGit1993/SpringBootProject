@@ -1,21 +1,15 @@
 package org.example.controller;
 
 import jakarta.validation.Valid;
-import lombok.Getter;
 import org.example.model.CustumResponseDTO;
-import org.example.model.User;
+import org.example.model.dtos.UserDTO;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.naming.Binding;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -32,7 +26,7 @@ public class UserController
     }
 
     @PostMapping(path="/user")//SA CREEAM RESURSE NOI
-    public ResponseEntity<CustumResponseDTO> createNewUser(@RequestBody @Valid User user , BindingResult bindingResult)//ii spune unde sa se uite cu requestBody
+    public ResponseEntity<CustumResponseDTO> createNewUser(@RequestBody @Valid UserDTO user , BindingResult bindingResult)//ii spune unde sa se uite cu requestBody
     {
         //request body-ii spune sa se uite in corpul din json
         //valid=trebuie pus ca sa fie luate @notblack,etc
@@ -55,7 +49,7 @@ public class UserController
 
 
     @GetMapping("/getUsersByFirstName")
-    public List<User> getUsersByFirstName(@RequestParam(required = false) String firstName)
+    public List<UserDTO> getUsersByFirstName(@RequestParam(required = false) String firstName)
     {
 
         return userService.fiindUsersByFirstName(firstName);
