@@ -2,6 +2,7 @@ package org.example.model.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @AllArgsConstructor
@@ -11,7 +12,8 @@ import lombok.*;
 @Builder
 public class UserUpdateDTO {
 
-    private long id;
+    @NotNull(message = "Id can not be null")
+    private Long id;
     private String firstName;
     private String lastName;
     private String username;

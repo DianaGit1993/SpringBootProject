@@ -1,24 +1,23 @@
-package org.example.model.entities;
-
+package org.example.model.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
-@Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 @ToString
-public class UserEntity {
+@Builder
+public class UserSearchDTO {
 
+    private Long id;
     private String firstName;
     private String lastName;
     private String username;
     private String email;
     private int age;
-    private String password;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String password;
 }

@@ -1,13 +1,18 @@
 package org.example.service;
 
+import jakarta.transaction.Transactional;
 import org.example.model.dtos.UserCreateDTO;
-import org.example.model.entities.UserEntity;
+import org.example.model.dtos.UserSearchDTO;
+import org.example.model.dtos.UserUpdateDTO;
+import org.example.model.entities.User;
 import org.example.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -24,23 +29,40 @@ public class UserService {
         this.modelMapper = modelMapper;
     }
 
-    public List<UserCreateDTO> findUsersByFirstName(String firstName) {
-        // validate, transform...
-        return userRepository.findUsersByFirstName(firstName);
+    public List<UserSearchDTO> findUsersByFirstName(String firstName) {
+        List<User> userEntities = userRepository.findUserByFirstName(firstName);
+        return userEntities.stream().map(userMapper::mapUserEntityToUserSearchDTO).collect(Collectors.toList());
+    }
+
+    public List<UserSearchDTO> findUsersThatAreAdults() {
+        List<User> userEntities = userRepository.findUsersThatAreAdults();
+        return userEntities.stream().map(userMapper::mapUserEntityToUserSearchDTO).collect(Collectors.toList());
     }
 
     public UserCreateDTO createUser(UserCreateDTO userToCreateDTO) {
         // translate from UserDTO -> UserEntity
-       UserEntity userEntity = userMapper.mapUserDTOtoUserEntity(userToCreateDTO);
-       UserEntity createdUserEntity = userRepository.createUser(userEntity);
-       return userMapper.mapUserEntityToUserDTO(createdUserEntity);// translate from UserEntity -> UserDTO
+       User user = userMapper.mapUserDTOtoUserEntity(userToCreateDTO);
+       User createdUser = userRepository.save(user);
+       return userMapper.mapUserEntityToUserDTO(createdUser);// translate from UserEntity -> UserDTO
     }
 
-    public UserCreateDTO updateUser(UserCreateDTO userCreateDTO){
+    @Transactional
+    public boolean deleteUserById(Long id){
+       return userRepository.deleteUserById(id)>0;
+    }
 
-        UserEntity userEntity = modelMapper.map(userCreateDTO, UserEntity.class);
+//
+    public UserSearchDTO updateUser(UserUpdateDTO userUpdateDTO){
+
+        User existingUser = userRepository.findUserById(userUpdateDTO.getId());
         // userRepository...
-        return modelMapper.map(userEntity, UserCreateDTO.class);
+        if(Objects.isNull(existingUser)){
+            throw new RuntimeException("UserNotFound");
+        }
+        User user = modelMapper.map(userUpdateDTO, User.class);
+        userRepository.save(user);
+
+        return modelMapper.map(user, UserSearchDTO.class);
 
     }
 

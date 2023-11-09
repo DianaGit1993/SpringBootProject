@@ -1,30 +1,30 @@
 package org.example.repository;
 
-import org.example.model.dtos.UserCreateDTO;
-import org.example.model.entities.UserEntity;
+import org.example.model.entities.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
+
 
 @Repository
-public class UserRepository {
+public interface UserRepository extends JpaRepository<User, Long> {
 
-   private UserCreateDTO userCreateDTO1 = new UserCreateDTO("alex","Jhon","last","email",23,"password");
-   private UserCreateDTO userCreateDTO2 = new UserCreateDTO("Mike","Tyson","last","email@asdwed", 30, "pass1234");
-   private UserCreateDTO userCreateDTO3 = new UserCreateDTO("Erica","Smith","Jhon","email@test.fom",40, "wefwefwef");
+     User findUserById(Long id);
 
-   private List<UserEntity> userEntities = new ArrayList<>();
-    public List<UserCreateDTO> findUsersByFirstName(String firstName){
-        //run sql query to get user by username
-        return Stream.of(userCreateDTO1, userCreateDTO2, userCreateDTO3).filter(userDTO -> userDTO.getFirstName()
-                .equals(firstName)).toList();
-    }
+     List<User> findUserByFirstName(String firstName);
 
-    public UserEntity createUser(UserEntity userToSaveIdDB){
-        userEntities.add(userToSaveIdDB);
-        return userToSaveIdDB;
-    }
+     int deleteUserById(Long id);
+
+//     using native query
+     @Query(value = "SELECT * FROM users WHERE age > 17", nativeQuery = true)
+     List<User> findUsersThatAreAdults();
+//
+//     //using jpql query
+//     @Query(value = "SELECT u FROM user u WHERE u.age > 17")
+//     List<User> findUsersThatAreAdults();
+//
+
 
 }

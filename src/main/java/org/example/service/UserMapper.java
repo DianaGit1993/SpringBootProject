@@ -1,21 +1,33 @@
 package org.example.service;
 
 import org.example.model.dtos.UserCreateDTO;
-import org.example.model.entities.UserEntity;
+import org.example.model.dtos.UserSearchDTO;
+import org.example.model.entities.User;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserMapper {
 
-    public UserEntity mapUserDTOtoUserEntity(UserCreateDTO userCreateDTO){
-        return new UserEntity(userCreateDTO.getFirstName(), userCreateDTO.getLastName(),
-                userCreateDTO.getUsername(), userCreateDTO.getEmail(), userCreateDTO.getAge(),
-                userCreateDTO.getPassword());
+    public User mapUserDTOtoUserEntity(UserCreateDTO userCreateDTO){
+        User user= new User();
+        user.setUsername(userCreateDTO.getUsername());
+        user.setFirstName(userCreateDTO.getFirstName());
+        user.setLastName(userCreateDTO.getLastName());
+        user.setAge(userCreateDTO.getAge());
+        user.setEmail(userCreateDTO.getEmail());
+        user.setPassword(userCreateDTO.getPassword());
+        return user;
     }
 
-    public UserCreateDTO mapUserEntityToUserDTO(UserEntity userEntity){
-        return UserCreateDTO.builder().age(userEntity.getAge()).email(userEntity.getEmail())
-                .username(userEntity.getUsername()).firstName(userEntity.getFirstName())
-                .lastName(userEntity.getLastName()).password(userEntity.getPassword()).build();
+    public UserCreateDTO mapUserEntityToUserDTO(User user){
+        return UserCreateDTO.builder().age(user.getAge()).email(user.getEmail())
+                .username(user.getUsername()).firstName(user.getFirstName())
+                .lastName(user.getLastName()).password(user.getPassword()).build();
+    }
+
+    public UserSearchDTO mapUserEntityToUserSearchDTO(User user){
+        return UserSearchDTO.builder().id(user.getId()).age(user.getAge()).email(user.getEmail())
+                .username(user.getUsername()).firstName(user.getFirstName())
+                .lastName(user.getLastName()).password(user.getPassword()).build();
     }
 }

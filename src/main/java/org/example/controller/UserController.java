@@ -3,6 +3,7 @@ package org.example.controller;
 import jakarta.validation.Valid;
 import org.example.model.CustomResponseDTO;
 import org.example.model.dtos.UserCreateDTO;
+import org.example.model.dtos.UserSearchDTO;
 import org.example.model.dtos.UserUpdateDTO;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping(path = "/api/v1")
@@ -45,17 +47,36 @@ public class UserController {
         return new ResponseEntity<>(customResponseDTO, HttpStatus.CREATED);
     }
 
-//    @PutMapping(path = "/user")
-//    public ResponseEntity<CustomResponseDTO> updateUser(UserUpdateDTO){
-//        //...\
-//        return null;
-//    }
+    @PutMapping(path = "/user")
+    public ResponseEntity updateUser(@RequestBody @Valid UserUpdateDTO user, BindingResult bindingResult){
+        //...\
+        if(Objects.nonNull(userService.updateUser(user))){
+            return new ResponseEntity<>("User updated", HttpStatus.OK);
+
+        }
+        return new ResponseEntity<>("User not updated", HttpStatus.BAD_REQUEST);
+
+    }
 
 
     @GetMapping("/getUsersByFirstName/{firstName}")
 //    public List<User> getUsersByFirstName(@RequestParam String firstName){ -> Query param ?firstName=alex
-    public List<UserCreateDTO> getUsersByFirstName(@PathVariable String firstName) { // -> Path param ../23 (23 fiind id-ul)
+    public List<UserSearchDTO> getUsersByFirstName(@PathVariable String firstName) { // -> Path param ../23 (23 fiind id-ul)
         return userService.findUsersByFirstName(firstName);
     }
 
+    @GetMapping("/findUsersThatAreAdults")
+//    public List<User> getUsersByFirstName(@RequestParam String firstName){ -> Query param ?firstName=alex
+    public List<UserSearchDTO> findUsersThatAreAdults() { // -> Path param ../23 (23 fiind id-ul)
+        return userService.findUsersThatAreAdults();
+    }
+
+    @DeleteMapping("/deleteUserById/{id}")
+//    public List<User> getUsersByFirstName(@RequestParam String firstName){ -> Query param ?firstName=alex
+    public ResponseEntity deleteUserById(@PathVariable Long id) { // -> Path param ../23 (23 fiind id-ul)
+        if (userService.deleteUserById(id))
+            return new ResponseEntity("User deleted", HttpStatus.OK);
+
+        return new ResponseEntity("User not deleted", HttpStatus.BAD_REQUEST);
+    }
 }
