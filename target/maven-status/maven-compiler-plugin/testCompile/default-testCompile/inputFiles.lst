@@ -1,2 +1,4 @@
-C:\Users\diana\IdeaProjects\SpringBootProject\src\test\java\org\example\UserRegistrationServiceTest.java
-C:\Users\diana\IdeaProjects\SpringBootProject\src\test\java\org\example\calculator\CalculatorTest.java
+C:\Users\diana\IdeaProjects\SpringBootProject\src\test\java\org\example\testexamples\UserCreateDTORegistrationServiceTest.java
+C:\Users\diana\IdeaProjects\SpringBootProject\src\test\java\org\example\testexamples\SMSNotificationTest.java
+C:\Users\diana\IdeaProjects\SpringBootProject\src\test\java\org\example\testexamples\OrderProcesingTest.java
+C:\Users\diana\IdeaProjects\SpringBootProject\src\test\java\org\example\testexamples\calculator\CalculatorTest.java

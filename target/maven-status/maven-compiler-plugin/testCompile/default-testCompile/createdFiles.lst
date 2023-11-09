@@ -1,1 +1,3 @@
-org\example\UserRegistrationServiceTest.class
+org\example\testexamples\SMSNotificationTest.class
+org\example\testexamples\OrderProcesingTest.class
+org\example\testexamples\UserCreateDTORegistrationServiceTest.class

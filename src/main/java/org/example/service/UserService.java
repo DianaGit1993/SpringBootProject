@@ -1,7 +1,8 @@
 package org.example.service;
 
 import org.example.model.dtos.UserCreateDTO;
-import org.example.model.entities.UserEntity;
+import org.example.model.dtos.UserSearchDTO;
+import org.example.model.entities.User;
 import org.example.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,23 +25,24 @@ public class UserService {
         this.modelMapper = modelMapper;
     }
 
-    public List<UserCreateDTO> findUsersByFirstName(String firstName) {
-        // validate, transform...
-        return userRepository.findUsersByFirstName(firstName);
-    }
+//    public List<UserCreateDTO> findUsersByFirstName(String firstName) {
+//        // validate, transform...
+//        return userRepository.findUsersByFirstName(firstName);
+//    }
 
-    public UserCreateDTO createUser(UserCreateDTO userToCreateDTO) {
+    public UserSearchDTO createUser(UserCreateDTO userToCreateDTO) {
         // translate from UserDTO -> UserEntity
-       UserEntity userEntity = userMapper.mapUserDTOtoUserEntity(userToCreateDTO);
-       UserEntity createdUserEntity = userRepository.createUser(userEntity);
-       return userMapper.mapUserEntityToUserDTO(createdUserEntity);// translate from UserEntity -> UserDTO
+       User user = userMapper.mapUserDTOtoUserEntity(userToCreateDTO);
+       User createdUser = userRepository.save(user);//salvam userul in db => user entity
+
+       return userMapper.mapUserEntityToUserSearchDTO(createdUser);// translate from UserEntity -> UserDTO
     }
 
     public UserCreateDTO updateUser(UserCreateDTO userCreateDTO){
 
-        UserEntity userEntity = modelMapper.map(userCreateDTO, UserEntity.class);
+        User user = modelMapper.map(userCreateDTO, User.class);
         // userRepository...
-        return modelMapper.map(userEntity, UserCreateDTO.class);
+        return modelMapper.map(user, UserCreateDTO.class);
 
     }
 
