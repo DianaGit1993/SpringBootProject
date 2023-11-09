@@ -74,8 +74,8 @@
   </tr>
   </tbody>
 </table>
-  <div th:if="${userFound}" th:text="'User Found: ' + ${userDTO}"></div>
+  <div th:if="${userFound}" th:text="'User Found: ' + ${userCreateDTO}"></div>
   <div th:if="${notFound}" th:text="'User Not Found'"></div>
-  <div th:if="${error}" th:text="'Error occurred while retrieving userDTO'"></div>
+  <div th:if="${error}" th:text="'Error occurred while retrieving userCreateDTO'"></div>
 </body>
 </html>
