@@ -10,10 +10,10 @@ public class Main {
         SpringApplication.run(Main.class);
 
 //        System.out.println("Hello world!");
-//        User user = new User(2,"Jhon");
+//        UserDTO user = new UserDTO(2,"Jhon");
 //        user.getId();
 //        user.setId(2);
 //
-//        User user2 = User.builder().id(2).name("Jhon").build();
+//        UserDTO user2 = UserDTO.builder().id(2).name("Jhon").build();
     }
 }

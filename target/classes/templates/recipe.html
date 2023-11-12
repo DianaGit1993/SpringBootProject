@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Restaurant</title>
+    <title>Recipe</title>
     <style>
         table {
           border-collapse: collapse;
@@ -51,32 +51,33 @@
     </style>
 </head>
 <body>
-<h1>Restaurant Table</h1>
-<form th:action="@{/restaurant}" method="get"  >
-    <label for="id">Restaurant ID:</label>
-    <input type="text" id = "id" placeholder="Restaurant ID" name = "id" >
+<h1>Recipe details</h1>
+<form th:action="@{/recipes}" method="get"  >
+    <label for="name">Recipe name:</label>
+    <input type="text" id = "name" placeholder="Recipe name" name = "name" >
     <button type="submit" >Search</button>
     <table>
         <thead>
         <tr>
-            <th>ID</th>
             <th>Name</th>
-            <th>Type</th>
-            <th>Number of Tables</th>
+            <th>Ingredients</th>
+            <th>Preparation Steps</th>
+            <th>Cooking Time (minutes)</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="restaurant : ${restaurants}">
-            <td th:text="${restaurant.id}"></td>
-            <td th:text="${restaurant.name}"></td>
-            <td th:text="${restaurant.type}"></td>
-            <td th:text="${restaurant.numberOfTables}"></td>
+        <tr th:each="recipe : ${recipes}">
+            <td th:text="${recipe.name}"></td>
+            <td th:text="${recipe.ingredients}"></td>
+            <td th:text="${recipe.preparationSteps}"></td>
+            <td th:text="${recipe.cookingTime}"></td>
         </tr>
         </tbody>
     </table>
-    <div th:if="${userFound}" th:text="'User Found: ' + ${userDTO}"></div>
-    <div th:if="${notFound}" th:text="'User Not Found'"></div>
-    <div th:if="${error}" th:text="'Error occurred while retrieving userDTO'"></div>
+    <div th:if="${userFound}" th:text="'Recipe Found: ' + ${recipe}"></div>
+    <div th:if="${notFound}" th:text="'Recipe Not Found'"></div>
+    <div th:if="${error}"
+         th:text="'Error occurred while retrieving recipe'"></div>
 </form>
 </body>
 </html>
