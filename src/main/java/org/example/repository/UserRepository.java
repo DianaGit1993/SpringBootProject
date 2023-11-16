@@ -1,10 +1,11 @@
 package org.example.repository;
 
-import org.example.model.User;
+import org.example.model.entities.User;
 import org.example.model.dtos.UserDTO;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -15,8 +16,10 @@ import java.util.stream.Stream;
 
 // UserRepositoy devine interfata
 public interface UserRepository extends JpaRepository<org.example.model.entities.User, Long> {
-    @Query("")
-    List<User> findUSerByFirstName(String firstName);
+   // @Query("")
+   // List<User> findUSerByFirstName(String firstName);
+
+
 // curs 24.10
 //public class UserRepository{
 //    // pt test
@@ -71,4 +74,12 @@ public interface UserRepository extends JpaRepository<org.example.model.entities
 
 //}
 
+    // curs 16 noiembrie -
+    List<User> findByFirstName(String firstName);  // -> de folosit in UserService
+
+//    @Query(value = "SELECT * FROM users u WHERE u.username = :username", nativeQuery = true)
+//    List<User> findByUserName(@Param("username") String username);
+//
+//    @Query(value = "SELECT * FROM users u WHERE u.username = :username", nativeQuery = true)
+//    List<User> findByAge(@Param("username") String username);
 }

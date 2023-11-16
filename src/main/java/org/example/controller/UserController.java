@@ -1,8 +1,10 @@
 package org.example.controller;
 import jakarta.validation.Valid;
+import org.apache.coyote.Response;
 import org.example.model.CustomResponseDTO;
 import org.example.model.User;
 import org.example.model.dtos.UserCreateDTO;
+import org.example.model.dtos.UserSearchDTO;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 // curs 24.10.2023
 //@Controller
@@ -42,8 +45,8 @@ public class UserController {
     // @RequestBody = face deserializare automat; adica mapeaza din JSON in obiect Java
     // modificare curs 02.11 -> se modifica tipul returnat din CustomResponseDTO in ResponseIdentity<CustomResponseDTO> pentru
     // a putea seta un anumit HttpStatus (in acest caz va fi CREATED)
-    @PostMapping(path = "/user") // Post creaza resurse noi
-    public /*User*/ ResponseEntity<org.example.model.entities.User> createNewUser(@RequestBody @Valid UserCreateDTO userCreateDTO, BindingResult bindingResult){  //@Valid impune ca obiectul sa fie validat conform anotarilor de validare din clasa User
+   // @PostMapping(path = "/user") // Post creaza resurse noi
+   // public /*User*/ ResponseEntity<org.example.model.entities.User> createNewUser(@RequestBody @Valid UserCreateDTO userCreateDTO, BindingResult bindingResult){  //@Valid impune ca obiectul sa fie validat conform anotarilor de validare din clasa User
         //System.out.println(user);
         //System.out.println(user.getEmail().toString());     // se face un apel pentru crearea unui user si se returneaza acesta pentru a vedea ceea ce s-a creat in spate
 
@@ -65,9 +68,9 @@ public class UserController {
 //            userList.add(user);
 //            customResponseDTO.setResponseMessage("User created successfully");     // daca nu sunt erori, se returneaza user-ul create si mesajul acesta
 //           return new ResponseEntity<>(customResponseDTO, HttpStatus.CREATED);
-            return new ResponseEntity(userService.createUser(userCreateDTO), HttpStatus.CREATED);
-        }
-    }
+         //   return new ResponseEntity(userService.createUser(userCreateDTO), HttpStatus.CREATED);
+       // }
+  //  }
 
     //->QueryParam ?firstName=alex
 //    public List<User> getUsersByFirstName(@PathVariable String firstName){  // -> Path param ../23 (unde 23 este id-ul)
@@ -76,4 +79,19 @@ public class UserController {
 //        // se apeleaza metoda getUSersByFirstName din UserService
 //        return userService.findUsersByFirstName(String firstName);
 //   }
-//}
+
+    // 16 noiembrie
+    @GetMapping("/getUsersByFirstName/{firstName}")
+    public ResponseEntity<CustomResponseDTO> getUsersByFirstName(@PathVariable String firstName){
+        ResponseEntity responseEntity;
+        CustomResponseDTO customResponseDTO = new CustomResponseDTO();
+        List<UserSearchDTO> foundUsers = userService.findUsersByFirstName(firstName);
+        if(Objects.isNull(foundUsers) || foundUsers.isEmpty()){
+            customResponseDTO.setResponseMessage("No user was found bi this first name.");
+            return new ResponseEntity<>(customResponseDTO, HttpStatus.NOT_FOUND);
+        }
+        customResponseDTO.setResponseObject(foundUsers);
+        customResponseDTO.setResponseMessage("User found successfully!");
+        return new ResponseEntity<>(customResponseDTO, HttpStatus.OK);
+    }
+}

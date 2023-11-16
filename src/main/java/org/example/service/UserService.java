@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -46,4 +47,14 @@ public class UserService {
 
     }
 
+
+    // curs 15 noiembrie
+    public List<UserSearchDTO> findUsersByFirstName(String firstName){
+        // validate, transform..
+
+
+      return userRepository.findByFirstName(firstName).stream()
+                        .map(entity->userMapper.mapUserEntityToUserSearchDTO(entity))
+                        .collect(Collectors.toList());
+    }
 }
