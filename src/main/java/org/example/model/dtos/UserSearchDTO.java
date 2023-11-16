@@ -1,12 +1,14 @@
 package org.example.model.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 @ToString
 @Builder
 public class UserSearchDTO {
@@ -19,4 +21,7 @@ public class UserSearchDTO {
     private int age;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
+
+    private List<PurchaseDTO> purchaseDTOs;
+    private List<AddressDTO> address;
 }

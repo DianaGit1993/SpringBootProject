@@ -2,9 +2,11 @@ package org.example.controller;
 
 import jakarta.validation.Valid;
 import org.example.model.CustomResponseDTO;
+import org.example.model.dtos.PurchaseCreateDTO;
+import org.example.model.dtos.PurchaseDTO;
 import org.example.model.dtos.UserCreateDTO;
 import org.example.model.dtos.UserSearchDTO;
-import org.example.model.dtos.UserUpdateDTO;
+import org.example.service.PurchaseService;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,20 +20,17 @@ import java.util.Objects;
 
 @RestController
 @RequestMapping(path = "/api/v1")
-public class UserController {
+public class PurchaseController {
 
-    List<UserCreateDTO> userCreateDTOList = new ArrayList<>();
-    private final UserService userService;
+    private final PurchaseService purchaseService;
 
     @Autowired
-    UserController(UserService userService) {
-        this.userService = userService;
+    PurchaseController(PurchaseService purchaseService) {
+        this.purchaseService = purchaseService;
     }
 
-    //    ResponseEntity<CustomResponseDTO> create...
-//    new ResponseEntity(cusomerRes, HttpStatus.OK)`
-    @PostMapping(path = "/user")
-    public ResponseEntity<UserSearchDTO> createNewUser(@RequestBody @Valid UserCreateDTO userCreateDTO, BindingResult bindingResult) {
+    @PostMapping(path = "/purchase")
+    public ResponseEntity<PurchaseDTO> makePurchase(@RequestBody @Valid PurchaseCreateDTO purchaseDTO) {
 //        CustomResponseDTO customResponseDTO = new CustomResponseDTO();
 
 //        if (bindingResult.hasErrors()) {
@@ -44,7 +43,7 @@ public class UserController {
 //        customResponseDTO.setResponseObject(userCreateDTO);
 //        userCreateDTOList.add(userCreateDTO);
 //        customResponseDTO.setResponseMessage("User created successfully");
-        return new ResponseEntity<>(userService.createUser(userCreateDTO), HttpStatus.CREATED);
+        return new ResponseEntity<>(purchaseService.makePurchase(purchaseDTO), HttpStatus.CREATED);
     }
 
 //    @PutMapping(path = "/user")
@@ -53,9 +52,9 @@ public class UserController {
 //        return null;
 //    }
 
-    @GetMapping(path = "/user")
-    public ResponseEntity<CustomResponseDTO> getAllUsers(){
-        List<UserSearchDTO> userSearchDTOS = userService.findAllUsers();
+    @GetMapping(path = "/purchase")
+    public ResponseEntity<CustomResponseDTO> getAllPurchases(){
+        List<PurchaseDTO> userSearchDTOS = purchaseService.findAllPurchases();
         CustomResponseDTO customResponseDTO = new CustomResponseDTO();
         if(Objects.isNull(userSearchDTOS) || userSearchDTOS.isEmpty()){
             customResponseDTO.setResponseMessage("No user has been found");
@@ -67,10 +66,5 @@ public class UserController {
     }
 
 
-//    @GetMapping("/getUsersByFirstName/{firstName}")
-//    public List<User> getUsersByFirstName(@RequestParam String firstName){ -> Query param ?firstName=alex
-//    public List<UserCreateDTO> getUsersByFirstName(@PathVariable String firstName) { // -> Path param ../23 (23 fiind id-ul)
-//        return userService.findUsersByFirstName(firstName);
-//    }
 
 }
