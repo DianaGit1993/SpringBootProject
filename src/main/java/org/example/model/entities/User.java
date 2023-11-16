@@ -4,10 +4,12 @@ package org.example.model.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity(name = "user")
 @Table(name = "users")
 public class User {
 
@@ -20,5 +22,8 @@ public class User {
     private String email;
     private int age;
     private String password;
+
+    @OneToMany(mappedBy = "user")
+    private List<Purchase> purchases;
 
 }

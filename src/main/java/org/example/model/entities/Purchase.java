@@ -1,0 +1,26 @@
+package org.example.model.entities;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity(name = "purchase")
+@Table(name = "purchase")
+@NoArgsConstructor
+@Getter
+@Setter
+@AllArgsConstructor
+public class Purchase {
+
+    @Id
+    private long id;
+    private String deliveryType;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
+}

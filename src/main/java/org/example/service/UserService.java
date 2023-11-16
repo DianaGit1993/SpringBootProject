@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -25,16 +26,17 @@ public class UserService {
         this.modelMapper = modelMapper;
     }
 
-//    public List<UserCreateDTO> findUsersByFirstName(String firstName) {
-//        // validate, transform...
-//        return userRepository.findUsersByFirstName(firstName);
-//    }
+    public List<UserSearchDTO> findUsersByFirstName(String firstName) {
+        // validate, transform...
+       return userRepository.findByFirstName(firstName).stream()
+                 .map(entity->userMapper.mapUserEntityToUserSearchDTO(entity))
+                 .collect(Collectors.toList());
+    }
 
     public UserSearchDTO createUser(UserCreateDTO userToCreateDTO) {
         // translate from UserDTO -> UserEntity
        User user = userMapper.mapUserDTOtoUserEntity(userToCreateDTO);
        User createdUser = userRepository.save(user);//salvam userul in db => user entity
-
        return userMapper.mapUserEntityToUserSearchDTO(createdUser);// translate from UserEntity -> UserDTO
     }
 

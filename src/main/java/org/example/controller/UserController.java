@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping(path = "/api/v1")
@@ -53,10 +54,18 @@ public class UserController {
 //    }
 
 
-//    @GetMapping("/getUsersByFirstName/{firstName}")
-//    public List<User> getUsersByFirstName(@RequestParam String firstName){ -> Query param ?firstName=alex
-//    public List<UserCreateDTO> getUsersByFirstName(@PathVariable String firstName) { // -> Path param ../23 (23 fiind id-ul)
-//        return userService.findUsersByFirstName(firstName);
-//    }
+    @GetMapping("/getUsersByFirstName/{firstName}")
+    public ResponseEntity<CustomResponseDTO> getUsersByFirstName(@PathVariable String firstName) { // -> Path param ../23 (23 fiind id-ul)
+
+        CustomResponseDTO customResponseDTO = new CustomResponseDTO();
+        List<UserSearchDTO> foundUsers = userService.findUsersByFirstName(firstName);
+        if(Objects.isNull(foundUsers)|| foundUsers.isEmpty()){
+            customResponseDTO.setResponseMessage("No user was found by this first name.");
+            return new ResponseEntity<>(customResponseDTO, HttpStatus.NOT_FOUND);
+        }
+        customResponseDTO.setResponseObject(foundUsers);
+        customResponseDTO.setResponseMessage("Users found successfully!");
+        return new ResponseEntity<>(customResponseDTO, HttpStatus.OK);
+    }
 
 }
