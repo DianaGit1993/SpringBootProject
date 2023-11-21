@@ -16,8 +16,10 @@ public class Purchase {
      // se recomanda sa nu se foloseasca lombok pentru clasele de genul asta pentru ca pot aparea probleme cu anotarile
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String deliveryType;
+    private String productName;
 
     @ManyToOne(fetch = FetchType.LAZY)   // - mai multe purchase-uri apartin de un user
     @JoinColumn(name = "user_id")    // -> coloana dupa care se face join

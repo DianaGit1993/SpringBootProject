@@ -94,4 +94,30 @@ public class UserController {
         customResponseDTO.setResponseMessage("User found successfully!");
         return new ResponseEntity<>(customResponseDTO, HttpStatus.OK);
     }
+
+    // create user method - 21 nov
+    @PostMapping(path = "/user")
+    public ResponseEntity<CustomResponseDTO> createNewUser(@RequestBody @Valid UserCreateDTO userCreateDTO, BindingResult bindingResult){
+        CustomResponseDTO customResponseDTO = new CustomResponseDTO();
+
+
+        if(bindingResult.hasErrors()) {
+            String errorMessage = bindingResult.getFieldError().getDefaultMessage();
+            customResponseDTO.setResponseObject(null);
+            customResponseDTO.setResponseMessage(errorMessage);
+            return new ResponseEntity<>(customResponseDTO, HttpStatus.BAD_REQUEST);
+        }
+        UserSearchDTO userSearchDTO = userService.createUser(userCreateDTO);
+
+        customResponseDTO.setResponseObject(userSearchDTO);
+        customResponseDTO.setResponseMessage("User created successfully");
+        return new ResponseEntity<>(customResponseDTO, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping(path = "/user")
+    public ResponseEntity deleteUser(@PathVariable Long userId){
+        // de apelat metoda din UserService
+        userService.deleteUserById(userId);
+        return new ResponseEntity("User deleted", HttpStatus.OK);
+    }
 }

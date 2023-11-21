@@ -39,6 +39,11 @@ public class UserService {
         return userMapper.mapUserEntityToUserSearchDTO(createdUser);// translate from UserEntity -> UserDTO
     }
 
+    public void deleteUserById(Long id){
+        // validari ex daca exista userul..
+        userRepository.deleteById(id); // pentru ca extinde JPA Repository
+
+    }
     public UserCreateDTO updateUser(UserCreateDTO userCreateDTO){
 
         User user = modelMapper.map(userCreateDTO, User.class);
