@@ -33,6 +33,10 @@ public class UserService {
                  .collect(Collectors.toList());
     }
 
+    public void deleteUser(Long id){
+        userRepository.deleteById(id);
+    }
+
     public UserSearchDTO createUser(UserCreateDTO userToCreateDTO) {
         // translate from UserDTO -> UserEntity
        User user = userMapper.mapUserDTOtoUserEntity(userToCreateDTO);
