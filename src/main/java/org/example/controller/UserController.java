@@ -28,30 +28,29 @@ public class UserController {
         this.userService = userService;
     }
 
-    //    ResponseEntity<CustomResponseDTO> create...
-//    new ResponseEntity(cusomerRes, HttpStatus.OK)`
+
     @PostMapping(path = "/user")
-    public ResponseEntity<UserSearchDTO> createNewUser(@RequestBody @Valid UserCreateDTO userCreateDTO, BindingResult bindingResult) {
-//        CustomResponseDTO customResponseDTO = new CustomResponseDTO();
+    public ResponseEntity<CustomResponseDTO> createNewUser(@RequestBody @Valid UserCreateDTO userCreateDTO, BindingResult bindingResult) {
+        CustomResponseDTO customResponseDTO = new CustomResponseDTO();
 
-//        if (bindingResult.hasErrors()) {
-//            String errorMessage = bindingResult.getFieldError().getDefaultMessage();
-//            customResponseDTO.setResponseObject(null);
-//            customResponseDTO.setResponseMessage(errorMessage);
-//            return new ResponseEntity<>(customResponseDTO, HttpStatus.BAD_REQUEST);
-//        }
+        if (bindingResult.hasErrors()) {
+            String errorMessage = bindingResult.getFieldError().getDefaultMessage();
+            customResponseDTO.setResponseObject(null);
+            customResponseDTO.setResponseMessage(errorMessage);
+            return new ResponseEntity<>(customResponseDTO, HttpStatus.BAD_REQUEST);
+        }
+        UserSearchDTO userSearchDTO = userService.createUser(userCreateDTO);
 
-//        customResponseDTO.setResponseObject(userCreateDTO);
-//        userCreateDTOList.add(userCreateDTO);
-//        customResponseDTO.setResponseMessage("User created successfully");
-        return new ResponseEntity<>(userService.createUser(userCreateDTO), HttpStatus.CREATED);
+        customResponseDTO.setResponseObject(userSearchDTO);
+        customResponseDTO.setResponseMessage("User created successfully");
+        return new ResponseEntity<>(customResponseDTO, HttpStatus.CREATED);
     }
 
-//    @PutMapping(path = "/user")
-//    public ResponseEntity<CustomResponseDTO> updateUser(UserUpdateDTO){
-//        //...\
-//        return null;
-//    }
+    @DeleteMapping(path = "/user/{userId}")
+    public ResponseEntity deleteUser(@PathVariable Long userId){
+        userService.deleteUserById(userId);
+        return new ResponseEntity("User deleted", HttpStatus.OK);
+    }
 
 
     @GetMapping("/getUsersByFirstName/{firstName}")

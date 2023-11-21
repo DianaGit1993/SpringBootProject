@@ -15,8 +15,10 @@ import lombok.Setter;
 public class Purchase {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String deliveryType;
+    private String productName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
